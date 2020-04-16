@@ -1,0 +1,4 @@
+name: CartaMapsPlugin
+main: ml.cartamc.cartamaps.CartaMapsPlugin
+version: "1.0"
+author: Kevin
