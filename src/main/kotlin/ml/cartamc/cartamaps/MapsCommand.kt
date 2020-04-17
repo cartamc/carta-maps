@@ -5,11 +5,11 @@ import net.md_5.bungee.api.CommandSender
 import net.md_5.bungee.api.chat.ComponentBuilder
 import net.md_5.bungee.api.plugin.Command
 
-class MapsCommand : Command("maps") {
+class MapsCommand(private val ptUrl: String, private val token: String) : Command("maps") {
     fun createServer() {
         val api = PteroBuilder().apply {
-            applicationUrl = "https://pt.kliu.io"
-            token = ""
+            applicationUrl = applicationUrl
+            token = token
         }.build().asApplication()
 
         val nest = api.retrieveNestById("8").execute()
