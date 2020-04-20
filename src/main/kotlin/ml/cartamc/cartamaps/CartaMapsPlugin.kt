@@ -35,6 +35,6 @@ class CartaMapsPlugin : Plugin() {
         logger.info("Initializing universes...")
         val cfg = initializeConfiguration()
         proxy.pluginManager.registerCommand(this, MapsCommand(
-                cfg.getString("ptUrl"), cfg.getString("token")))
+                logger, cfg.getString("ptUrl"), cfg.getString("token")))
     }
 }
