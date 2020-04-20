@@ -82,17 +82,17 @@ class MapsCommand(private val logger: Logger, private val ptUrl: String, private
         var server = createServer("test")
         while (!server.container.isInstalled) {
             Thread.sleep(1000)
-
+            server = app.retrieveServerById(server.id).execute()
         }
-        server.container.isInstalled
+
+        unzip(downloadFile.path, "/servers/${server.uuid}/world")
+
         client.setPower(
                 client.retrieveServerByIdentifier(server.identifier).execute(),
                 PowerAction.START)
                 .execute()
 
-        unzip(downloadFile.path, "/servers/${server.uuid}/world")
-
-        sender.sendMessage(ComponentBuilder("Hello!").create()[0])
+        sender.sendMessage(ComponentBuilder("Started!").create()[0])
     }
 
     override fun execute(sender: CommandSender, args: Array<String>) {
